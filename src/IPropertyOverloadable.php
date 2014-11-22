@@ -5,10 +5,18 @@ use Aedart\Overload\Exception\UndefinedPropertyException;
 /**
  * Property Overloadable
  * 
+ * <b>Description</b><br />
  * Provides means to somehow, dynamically, deal with inaccessible
  * properties, using PHP's magic methods; __set(), __get(), __isset()
  * and __unset().
  * 
+ * <b>Undefined Property Exception</b><br />
+ * How inaccessible properties are being handled, e.g. created on the fly
+ * or no at all, is entirely implementation dependent. If a given component
+ * doesn't allow certain properties to be created or obtained, then an
+ * "undefined property"-exception should be thrown
+ * 
+ * <b>Tip</b><br />
  * If the given class / object / component makes use of such, it is
  * recommended that those properties are documented, using PHPDoc's
  * "property"-tag. Doing so, code-completion will be enabled in many
