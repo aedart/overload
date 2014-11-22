@@ -13,5 +13,10 @@
     "require-dev": {
 	"codeception/codeception": "2.0.*"
     },
+    "autoload": {
+        "psr-4": {
+            "Aedart\\Overload\\": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
