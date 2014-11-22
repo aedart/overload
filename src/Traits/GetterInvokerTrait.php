@@ -46,7 +46,7 @@ trait GetterInvokerTrait {
 	    return $this->$methodName();
 	}
 	
-	throw new UndefinedPropertyException(sprintf('No "%s"() method awailable for property "%s"', $methodName, $property->getName()));
+	throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName, $property->getName()));
     }
 
     /**
