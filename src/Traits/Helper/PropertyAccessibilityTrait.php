@@ -2,6 +2,7 @@
 
 use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
 use RangeException;
+use ReflectionProperty;
 
 /**
  * Property Accessibility Trait
@@ -93,11 +94,38 @@ trait PropertyAccessibilityTrait {
      * @return boolean True if level is valid, false if not
      */
     protected function isPropertyAccessibilityLevelValid($level){
-	$min = PropertyAccessibilityLevel::PROTECTED_LEVEL;
-	$max = PropertyAccessibilityLevel::PRIVATE_LEVEL;
-	if(is_int($level) && ($min <= $level) && ($level <= $max)){
+	$public = PropertyAccessibilityLevel::PUBLIC_LEVEL;
+	$protected = PropertyAccessibilityLevel::PROTECTED_LEVEL;
+	$private = PropertyAccessibilityLevel::PRIVATE_LEVEL;
+	
+	if(is_int($level) && ($level == $public ||$level == $protected || $level == $private)){
 	    return true;
 	}
+	
+	return false;
+    }
+    
+    /**
+     * Check if a given property is accessible; if this component is allowed
+     * to use __get() / __set() to read / write the given property
+     * 
+     * <b>Static properties</b><br />
+     * Static properties are NOT considered to be accessible, in this
+     * default implementation
+     * 
+     * @see PropertyAccessibilityTrait::getPropertyAccessibilityLevel()
+     * 
+     * @param ReflectionProperty $property The given property in question
+     * @return boolean True if the given property is accessible, false if not
+     */
+    protected function isPropertyAccessible(ReflectionProperty $property){
+	$level = $this->getPropertyAccessibilityLevel();
+	$modifers = $property->getModifiers();
+	
+	if(!$property->isStatic() && $modifers <= $level){
+	    return true;
+	}
+	
 	return false;
     }
 }
