@@ -52,23 +52,12 @@ trait GetterInvokerTrait {
      * @throws UndefinedPropertyException If given property doesn't have a corresponding get
      */
     protected function invokeGetter(ReflectionProperty $property){
-	if($this->hasGetterFor($property)){
-	    $methodName = $this->generateGetterName($property->getName());
+	$methodName = $this->generateGetterName($property->getName());
+	if($this->hasInternalMethod($methodName)){
 	    return $this->$methodName();
 	}
 	
 	throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName, $property->getName()));
-    }
-
-    /**
-     * Check if the given property has a corresponding getter-method
-     * 
-     * @param ReflectionProperty $property The property in question
-     * @return boolean True if a getter method exists for the given property
-     */
-    protected function hasGetterFor(ReflectionProperty $property){
-	$methodName = $this->generateGetterName($property->getName());
-	return $this->hasInternalMethod($methodName);
     }
 
     /**
