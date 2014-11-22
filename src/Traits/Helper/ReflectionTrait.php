@@ -7,7 +7,13 @@ use ReflectionProperty;
 /**
  * Reflection Trait
  *
- * @todo: Desc...
+ * <b>Description</b><br />
+ * Provides some utility methods for obtaining information about
+ * a components properties available, their accessibility (in overloading
+ * context)
+ * 
+ * @see PropertyAccessibilityTrait
+ * @see \Aedart\Overload\Interfaces\PropertyAccessibilityLevel
  * 
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
