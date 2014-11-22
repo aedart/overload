@@ -1,7 +1,7 @@
 {
     "name": "aedart/overload",
     "description" : "Property Overloading",
-    "keywords": ["Overload", "Property", "Magic", "__set", "__get", "__isset", "__unset"],
+    "keywords": ["Overload", "Property", "Magic Method", "__set", "__get", "__isset", "__unset"],
     "license": "proprietary",
     "type": "library",
     "authors": [
@@ -10,6 +10,9 @@
             "email": "aedart@gmail.com"
         }
     ],
+    "require": {
+	"illuminate/support": "4.*"
+    },
     "require-dev": {
 	"codeception/codeception": "2.0.*"
     },
