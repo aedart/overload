@@ -1,4 +1,4 @@
-<?php namespace Aedart\Overload;
+<?php namespace Aedart\Overload\Interfaces;
 
 use Aedart\Overload\Exception\UndefinedPropertyException;
 
@@ -27,7 +27,7 @@ use Aedart\Overload\Exception\UndefinedPropertyException;
  * 
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-interface IPropertyOverloadable {
+interface PropertyOverloadable {
     
     /**
      * Method is run when writing data to inaccessible properties.
