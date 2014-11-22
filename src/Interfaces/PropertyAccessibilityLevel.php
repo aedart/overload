@@ -18,6 +18,12 @@ use ReflectionProperty;
 interface PropertyAccessibilityLevel {
    
    /**
+    * Public level - no 'protected' nor 'private' properties
+    * are going to be automatically get / set
+    */
+   const PUBLIC_LEVEL = ReflectionProperty::IS_PUBLIC;
+    
+   /**
     * Protected level - properties that are declared
     * 'protected' can be set / get.
     */
