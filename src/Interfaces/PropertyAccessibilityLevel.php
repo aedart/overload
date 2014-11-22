@@ -1,5 +1,7 @@
 <?php namespace Aedart\Overload\Interfaces;
 
+use ReflectionProperty;
+
 /**
  * Property Accessibility
  * 
@@ -19,11 +21,11 @@ interface PropertyAccessibilityLevel {
     * Protected level - properties that are declared
     * 'protected' can be set / get.
     */
-   const PROTECTED_LEVEL = 1; 
+   const PROTECTED_LEVEL = ReflectionProperty::IS_PROTECTED;
    
    /**
     * Private level - properties that are declared
     * 'protected' or 'private' can be set / get.
     */
-   const PRIVATE_LEVEL = 2;
+   const PRIVATE_LEVEL = ReflectionProperty::IS_PRIVATE;
 }
