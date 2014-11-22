@@ -1,16 +1,79 @@
 <?php namespace Aedart\Overload\Traits;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+use Aedart\Overload\Exception\UndefinedPropertyException;
+use Aedart\Overload\Traits\Helper\ReflectionTrait;
+use Illuminate\Support\Str;
+use ReflectionProperty;
 
 /**
- * Description of GetterInvokerTrait
+ * Getter Invoker Trait
  *
+ * @todo: Description
+ * 
+ * @see \Aedart\Overload\Interfaces\PropertyOverloadable
+ * 
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait GetterInvokerTrait {
-    //put your code here
+    
+    use ReflectionTrait;
+    
+    /**
+     * Method is utilized for reading data from inaccessible properties.
+     * 
+     * @param string $name Property name
+     * @return mixed Property value
+     * @throws UndefinedPropertyException If property doesn't exist
+     */
+    public function __get($name){
+	if($this->hasInternalProperty($name)){
+	    return $this->invokeGetter($this->getInternalProperty($name));
+	}
+	
+	throw new UndefinedPropertyException(sprintf('Property "%s" does not exist or is inaccessible', $name));
+    }
+    
+    /**
+     * Invoke and return the given property's getter-method
+     * 
+     * @param ReflectionProperty $property The property in question
+     * @return mixed Property value
+     * @throws UndefinedPropertyException If given property doesn't have a corresponding get
+     */
+    protected function invokeGetter(ReflectionProperty $property){
+	if($this->hasGetterFor($property)){
+	    $methodName = $this->generateGetterName($property->getName());
+	    return $this->$methodName();
+	}
+	
+	throw new UndefinedPropertyException(sprintf('No "%s"() method awailable for property "%s"', $methodName, $property->getName()));
+    }
+
+    /**
+     * Check if the given property has a corresponding getter-method
+     * 
+     * @param ReflectionProperty $property The property in question
+     * @return boolean True if a getter method exists for the given property
+     */
+    protected function hasGetterFor(ReflectionProperty $property){
+	$methodName = $this->generateGetterName($property->getName());
+	return $this->hasInternalMethod($methodName);
+    }
+
+    /**
+     * Generate and return a 'getter' name, based upon the given
+     * property name
+     * 
+     * <b>Example</b><br />
+     * <pre>
+     *	    $propertyName = 'logger';
+     *	    return generateGetterName($propertyName) // Returns getLogger
+     * </pre>
+     * 
+     * @param string $propertyName Name of a given property
+     * @return string Getter method name
+     */
+    protected function generateGetterName($propertyName){
+	return 'get' . ucfirst(Str::camel($propertyName));
+    }
 }
