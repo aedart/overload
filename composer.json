@@ -1,0 +1,17 @@
+{
+    "name": "aedart/overload",
+    "description" : "Property Overloading",
+    "keywords": ["Overload", "Property", "Magic", "__set", "__get", "__isset", "__unset"],
+    "license": "proprietary",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alin Eugen Deac",
+            "email": "aedart@gmail.com"
+        }
+    ],
+    "require-dev": {
+	"codeception/codeception": "2.0.*"
+    },
+    "minimum-stability": "stable"
+}
