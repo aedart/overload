@@ -8,9 +8,20 @@ use ReflectionProperty;
 /**
  * Getter Invoker Trait
  *
- * @todo: Description
+ * <b>Description</b><br />
+ * Implements the __get() method, by looking for a requested property's
+ * corresponding getter-method and invokes it, if available.
+ * 
+ * If no getter method is available, the __get() will fail and throw an
+ * exception.
+ * 
+ * <b>Property accessibility</b><br />
+ * By default, 'protected' properties are exposed and this component will
+ * search and execute getter methods for those properties, if they are
+ * available.
  * 
  * @see \Aedart\Overload\Interfaces\PropertyOverloadable
+ * @see \Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  * 
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
