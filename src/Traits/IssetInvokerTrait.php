@@ -6,8 +6,7 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
  * Isset Invoker Trait
  *
  * <b>Description</b><br />
- * Implements the __isset() method, by looking for a requested property's
- * corresponding getter-method and invokes it, if available.
+ * Implements the __isset() method
  * 
  * <b>Property accessibility</b><br />
  * By default, 'protected' properties are exposed and this component will
