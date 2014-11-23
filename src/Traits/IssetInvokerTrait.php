@@ -10,7 +10,7 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
  * 
  * <b>Property accessibility</b><br />
  * By default, 'protected' properties are exposed and this component will
- * search and execute isset method for those properties, if they are
+ * search and execute isset method on those properties, if they are
  * available. If not, then the __isset() will return false
  * 
  * @see \Aedart\Overload\Interfaces\PropertyOverloadable
