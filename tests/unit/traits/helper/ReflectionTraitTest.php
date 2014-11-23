@@ -26,7 +26,7 @@ class ReflectionTraitTest extends \Codeception\TestCase\Test
    
     /**
      * Returns a dummy class
-     * @return \PropertyAccessibilityTraitDummy
+     * @return \ReflectionTraitDummy
      */
     protected function getDummyClass(){
 	return new ReflectionTraitDummy();
