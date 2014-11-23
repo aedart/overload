@@ -31,19 +31,7 @@ class GetterInvokerTraitTest extends \Codeception\TestCase\Test
     protected function getDummyClass(){
 	return new GetterInvokerDummy();
     }
-    
-    /**
-     * Get a method - with its accessibility set to true
-     * @param string $name Method name
-     * @return \ReflectionMethod
-     */
-    protected function getMethod($name){
-	$class = new ReflectionClass($this->getDummyClass());
-	$method = $class->getMethod($name);
-	$method->setAccessible(true);
-	return $method;
-    }
-    
+        
     /********************************************************************
      * Actual tests
      *******************************************************************/
