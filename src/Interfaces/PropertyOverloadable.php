@@ -54,6 +54,8 @@ interface PropertyOverloadable {
      * If an undefined property is being checked, using isset or empty, then
      * this method will always return false
      * 
+     * @see http://php.net/manual/en/function.isset.php
+     * 
      * @param string $name Property name
      * @return boolean True if property isset, false if not OR if property is undefined
      */
