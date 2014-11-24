@@ -2,7 +2,7 @@
     "name": "aedart/overload",
     "description" : "Provides means to dynamically deal with inaccessible properties, by implementing PHP’s magic methods; __get(), __set(), __isset(), and __unset()",
     "keywords": ["Overload", "Property", "Magic Method", "__set", "__get", "__isset", "__unset"],
-    "license": "proprietary",
+    "license": "BSD-3-Clause",
     "type": "library",
     "authors": [
         {
