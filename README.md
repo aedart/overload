@@ -13,6 +13,8 @@ Official project website (https://bitbucket.org/aedart/overload)
 ## How to install ##
 
 ```
+#!console
+
 composer require aedart/overload dev-master
 ```
 
@@ -23,6 +25,9 @@ This package uses [composer](https://getcomposer.org/). If you do not know what 
 ### A Person class ###
 
 ```
+#!php
+<?php
+
 use Aedart\Overload\Interfaces\PropertyOverloadable;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 
