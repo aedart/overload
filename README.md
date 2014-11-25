@@ -119,6 +119,8 @@ lowercaseLetter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k
 | "y" | "z" ;
 ```
 
+Above stated syntax / rule is expressed in [EBFN](http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form)
+
 **Examples:**
 
 ```
@@ -130,6 +132,66 @@ $personId = 78; // Will look for getPersonId() and setPersonId($value);
 $category_name = 'Products' // Will look for getCategoryName() and setCategoryName($value);
 
 ```
+
+## Protected vs. Private properties ##
+
+By default, only `protected` properties are going to be made accessible (or overloaded, if you will). This means that `private` declared properties are not going to be available.
+
+```
+#!php
+<?php
+
+use Aedart\Overload\Interfaces\PropertyOverloadable;
+use Aedart\Overload\Traits\PropertyOverloadTrait;
+
+class Person implements PropertyOverloadable{
+
+    use PropertyOverloadTrait;
+
+    protected $name = null; // This is made accessible, because of the PropertyOverloadTrait.
+			    // When attempted to read, getName() is invoked
+			    // When attempted to write, setName($value) is invoked
+
+    private $age = null; // Is NOT made accessible, read / write attempts will result in Exception
+
+    // Remaining implementation not shown...
+}
+
+```
+
+### Behaviour override ###
+
+Should you wish to also expose your private declared properties, then this behaviour can be set per object, from an inside scope.
+
+```
+#!php
+<?php
+
+use Aedart\Overload\Interfaces\PropertyOverloadable;
+use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
+use Aedart\Overload\Traits\PropertyOverloadTrait;
+
+class Person implements PropertyOverloadable{
+
+    use PropertyOverloadTrait;
+
+    protected $name = null; // This is made accessible, because of the PropertyOverloadTrait.
+			    // When attempted to read, getName() is invoked
+			    // When attempted to write, setName($value) is invoked
+
+    private $age = null;    // This is made accessible, because of the $this->setPropertyAccessibilityLevel(...).
+			    // When attempted to read, getName() is invoked
+			    // When attempted to write, setName($value) is invoked
+
+    public function __construct(){
+	// Change the property accessibility to private
+	$this->setPropertyAccessibilityLevel(PropertyAccessibilityLevel::PRIVATE_LEVEL);
+    }
+}
+
+```
+
+For further reference, read documentation in `Overload /Traits/Helper/PropertyAccessibilityTrait`
 
 ## License ##
 
