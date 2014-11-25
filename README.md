@@ -81,7 +81,55 @@ echo $person->name;	// Invokes the getName(), then outputs 'Alin'
 
 ```
 
-## When to use this ##
+## Naming convention applied ##
+
+### Property names ###
+
+This package assumes that you properties either follow [camelCase](http://en.wikipedia.org/wiki/Naming_convention_%28programming%29#Letter_case_and_numerals) or [underscore](http://en.wikipedia.org/wiki/Naming_convention_%28programming%29#Letter_case_and_numerals) standard. Consider the following examples:
+
+```
+#!php
+<?php
+
+$personId = 78; // Valid
+
+$category_name = 'Products' // Valid
+
+$swordFish_length = 63; // Invalid, because its a mix of both camelCase and underscore
+
+```
+
+### Getter / Setter names ###
+
+Getters and setters follow a most strict naming convention; the must follow camelCase and be prefixed with `get` for getter methods and `set` for setter methods. In addition, the package uses the following syntax / rule when searching for a property’s corresponding getter or setter:
+
+```
+getterMethod = getPrefix, camelCasePropertyName;
+getPrefix = "get";
+
+setterMethod = setPrefix, camelCasePropertyName;
+setPrefix = "set";
+
+camelCasePropertyName = {uppercaseLetter, {lowercaseLetter}};
+uppercaseLetter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K"
+| "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X"
+| "Y" | "Z" ;
+lowercaseLetter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k"
+| "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x"
+| "y" | "z" ;
+```
+
+**Examples:**
+
+```
+#!php
+<?php
+
+$personId = 78; // Will look for getPersonId() and setPersonId($value);
+
+$category_name = 'Products' // Will look for getCategoryName() and setCategoryName($value);
+
+```
 
 ## License ##
 
