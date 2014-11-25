@@ -195,6 +195,19 @@ class Person implements PropertyOverloadable{
 
 For further reference, read documentation in `Overload/Traits/Helper/PropertyAccessibilityTrait`
 
+## Custom usage ##
+
+If you do not need the full property overload methods, e.g. you only wish to be able to get and set, but not to unset properties, then you can make use of the sub-traits, which the `PropertyOverloadTrait` is composed of.
+
+Each of the below listed traits can be used by themselves, without being dependent on each other.
+
+Trait  | Description | Namespace
+------------- | ------------- | -------------
+GetterInvokerTrait | Implements `__get()` | Aedart\Overload\Traits\GetterInvokerTrait
+SetterInvokerTrait  | Implements `__set()` | Aedart\Overload\Traits\SetterInvokerTrait
+IssetInvokerTrait  | Implements `__isset()` | Aedart\Overload\Traits\IssetInvokerTrait
+SetterInvokerTrait  | Implements `__unset()` | Aedart\Overload\Traits\UnsetInvokerTrait
+
 ## License ##
 
 [BSD-3-Clause](http://spdx.org/licenses/BSD-3-Clause), Read the LICENSE file included in this package
