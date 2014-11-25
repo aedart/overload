@@ -10,6 +10,16 @@ Official project website (https://bitbucket.org/aedart/overload)
 
 [TOC]
 
+## When to use this ##
+
+Generally speaking, magic methods can be very troublesome to use. For the most part, they prohibit the usage of auto-completion in IDEs and if not documented, developers are forced to read large sections of the source code, in order to gain understanding of what’s going on. Depending upon implementation, there might not be any validation, when dynamically assigning new properties to objects, which can break other components, which depend on the given object. In addition to this, it can also be very difficult to write tests for components that are using such magic methods.
+
+This package will not be able to solve any of the mentioned problems, because at the end of the day, as a developer, you still have to ensure that the code readable / understandable, testable and documented. Therefore, I recommend that this package only to be used, if and only if, the following are all true;
+
+-	Properties shouldn’t be allowed to be dynamically created and assigned to an object, without prior knowledge about them. Thus, properties must always be predefined.
+-	Getters and setters must always be used for reading / writing properties
+-	You wish to allow access to an object’s properties like such: `$person->age;` and still enforce some kind of validation.
+
 ## How to install ##
 
 ```
@@ -70,6 +80,8 @@ $person->name = 'Alin'; // Invokes the setName(...)
 echo $person->name;	// Invokes the getName(), then outputs 'Alin'
 
 ```
+
+## When to use this ##
 
 ## License ##
 
