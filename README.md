@@ -25,7 +25,7 @@ This package will not be able to solve any of the mentioned problems, because at
 ```
 #!console
 
-composer require aedart/overload dev-master
+composer require aedart/overload 1.0.*
 ```
 
 This package uses [composer](https://getcomposer.org/). If you do not know what that is or how it works, I recommend that you read a little about, before attempting to use this package.
@@ -82,6 +82,12 @@ echo isset($person->name); // Invokes the __isset(), then outputs true
 unset($person->name); // Invokes the __unset() and destroys the name property
 
 ```
+
+### Tip: PHPDoc ###
+
+When using PHP’s magic methods, for overloading properties, it is a very good idea to make use pf PHPDoc's `@property`-tag.
+Most IDEs can read it and make use of it to provide auto-completion.
+See http://www.phpdoc.org/docs/latest/references/phpdoc/tags/property.html
 
 ## Naming convention applied ##
 
