@@ -78,6 +78,8 @@ class Person implements PropertyOverloadable{
 $person = new Person();
 $person->name = 'Alin'; // Invokes the setName(...)
 echo $person->name;	// Invokes the getName(), then outputs 'Alin'
+echo isset($person->name); // Invokes the __isset(), then outputs true
+unset($person->name); // Invokes the __unset() and destroys the name property
 
 ```
 
@@ -191,7 +193,7 @@ class Person implements PropertyOverloadable{
 
 ```
 
-For further reference, read documentation in `Overload /Traits/Helper/PropertyAccessibilityTrait`
+For further reference, read documentation in `Overload/Traits/Helper/PropertyAccessibilityTrait`
 
 ## License ##
 
