@@ -212,7 +212,7 @@ Trait  | Description | Namespace
 GetterInvokerTrait | Implements `__get()` | Aedart\Overload\Traits\GetterInvokerTrait
 SetterInvokerTrait  | Implements `__set()` | Aedart\Overload\Traits\SetterInvokerTrait
 IssetInvokerTrait  | Implements `__isset()` | Aedart\Overload\Traits\IssetInvokerTrait
-SetterInvokerTrait  | Implements `__unset()` | Aedart\Overload\Traits\UnsetInvokerTrait
+UnsetInvokerTrait  | Implements `__unset()` | Aedart\Overload\Traits\UnsetInvokerTrait
 
 ## License ##
 
