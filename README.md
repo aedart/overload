@@ -25,7 +25,7 @@ This package will not be able to solve any of the mentioned problems, because at
 ```
 #!console
 
-composer require aedart/overload 1.0.*
+composer require aedart/overload 1.1.*
 ```
 
 This package uses [composer](https://getcomposer.org/). If you do not know what that is or how it works, I recommend that you read a little about, before attempting to use this package.
