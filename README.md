@@ -205,10 +205,13 @@ For further reference, read documentation in `Overload/Traits/Helper/PropertyAcc
 
 If you do not need the full property overload methods, e.g. you only wish to be able to get and set, but not to unset properties, then you can make use of the sub-traits, which the `PropertyOverloadTrait` is composed of.
 
+However, when using individually, you must also include the `Aedart\Overload\Traits\Helper\ReflectionTrait` or the individual traits are not going to work as expected; A fatal error will be thrown, stating that it cannot find various methods!
+
 Each of the below listed traits can be used by themselves, without being dependent on each other.
 
 Trait  | Description | Namespace
 ------------- | ------------- | -------------
+ReflectionTrait | *Must always be included* | Aedart\Overload\Traits\Helper\ReflectionTrait
 GetterInvokerTrait | Implements `__get()` | Aedart\Overload\Traits\GetterInvokerTrait
 SetterInvokerTrait  | Implements `__set()` | Aedart\Overload\Traits\SetterInvokerTrait
 IssetInvokerTrait  | Implements `__isset()` | Aedart\Overload\Traits\IssetInvokerTrait
