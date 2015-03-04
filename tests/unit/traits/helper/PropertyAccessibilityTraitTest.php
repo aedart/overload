@@ -6,7 +6,7 @@ use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
 /**
  * @coversDefaultClass Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  */
-class PropertyAccessibilitTraitTest extends \Codeception\TestCase\Test
+class PropertyAccessibilityTraitTest extends \Codeception\TestCase\Test
 {
     /**
      * @var \UnitTester
