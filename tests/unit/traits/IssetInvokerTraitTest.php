@@ -67,6 +67,8 @@ class IssetInvokerTraitTest extends \Codeception\TestCase\Test
 
 /**
  * Dummy class for given trait
+ *
+ * @property string $name
  */
 class IssetDummy {
     

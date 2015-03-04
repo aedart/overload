@@ -59,6 +59,8 @@ class UnsetInvokerTraitTest extends \Codeception\TestCase\Test
 
 /**
  * Dummy class that uses given trait
+ *
+ * @property string $name
  */
 class UnsetDummy {
     
