@@ -1,5 +1,6 @@
 <?php
 
+use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\IssetInvokerTrait;
 
 /**
@@ -72,7 +73,7 @@ class IssetInvokerTraitTest extends \Codeception\TestCase\Test
  */
 class IssetDummy {
     
-    use IssetInvokerTrait;
+    use ReflectionTrait, IssetInvokerTrait;
     
     protected $name = 'Jill Anderson';
     

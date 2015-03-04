@@ -1,7 +1,6 @@
 <?php namespace Aedart\Overload\Traits;
 
 use Aedart\Overload\Exception\UndefinedPropertyException;
-use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Illuminate\Support\Str;
 use ReflectionProperty;
 
@@ -20,14 +19,16 @@ use ReflectionProperty;
  * search and execute getter methods for those properties, if they are
  * available.
  *
+ * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
+ * A fatal error will occur if the given trait is not applied, in your component!
+ *
+ * @see \Aedart\Overload\Traits\Helper\ReflectionTrait
  * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see \Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait GetterInvokerTrait {
-
-    use ReflectionTrait;
 
     /**
      * Method is utilized for reading data from inaccessible properties.

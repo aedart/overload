@@ -1,5 +1,6 @@
 <?php
 
+use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\GetterInvokerTrait;
 
 /**
@@ -76,7 +77,7 @@ class GetterInvokerTraitTest extends \Codeception\TestCase\Test
  * @property string $name Name of some person
  */
 class GetterInvokerDummy{
-    use GetterInvokerTrait;
+    use ReflectionTrait, GetterInvokerTrait;
     
     protected $name = 'Jimmy Nielsen';
     protected $propWithoutGetter = 'Foo Bar';

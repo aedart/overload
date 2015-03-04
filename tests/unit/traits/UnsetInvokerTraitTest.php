@@ -1,5 +1,6 @@
 <?php
 
+use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\UnsetInvokerTrait;
 
 /**
@@ -64,7 +65,7 @@ class UnsetInvokerTraitTest extends \Codeception\TestCase\Test
  */
 class UnsetDummy {
     
-    use UnsetInvokerTrait;
+    use ReflectionTrait, UnsetInvokerTrait;
     
     protected $name = 'Lilla Henrikson';
     

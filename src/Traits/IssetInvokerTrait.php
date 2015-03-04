@@ -1,7 +1,5 @@
 <?php namespace Aedart\Overload\Traits;
 
-use Aedart\Overload\Traits\Helper\ReflectionTrait;
-
 /**
  * Isset Invoker Trait
  *
@@ -13,6 +11,10 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
  * search and execute isset method on those properties, if they are
  * available. If not, then the __isset() will return false
  *
+ * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
+ * A fatal error will occur if the given trait is not applied, in your component!
+ *
+ * @see \Aedart\Overload\Traits\Helper\ReflectionTrait
  * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see \Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  * @see http://php.net/manual/en/function.isset.php
@@ -20,8 +22,6 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait IssetInvokerTrait {
-
-    use ReflectionTrait;
 
     /**
      * Method is triggered by calling isset() or empty() on inaccessible properties.

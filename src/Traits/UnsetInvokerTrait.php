@@ -1,7 +1,6 @@
 <?php namespace Aedart\Overload\Traits;
 
 use Aedart\Overload\Exception\UndefinedPropertyException;
-use Aedart\Overload\Traits\Helper\ReflectionTrait;
 
 /**
  * Unset Invoker Trait
@@ -17,14 +16,16 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
  * search and execute unset method on those properties, if they are
  * available.
  *
+ * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
+ * A fatal error will occur if the given trait is not applied, in your component!
+ *
+ * @see \Aedart\Overload\Traits\Helper\ReflectionTrait
  * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see \Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait UnsetInvokerTrait {
-
-    use ReflectionTrait;
 
     /**
      * Method is invoked when unset() is used on inaccessible properties.
