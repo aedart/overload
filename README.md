@@ -93,7 +93,7 @@ See http://www.phpdoc.org/docs/latest/references/phpdoc/tags/property.html
 
 ### Property names ###
 
-This package assumes that you properties either follow [camelCase](http://en.wikipedia.org/wiki/Naming_convention_%28programming%29#Letter_case_and_numerals) or [Snake Case](http://en.wikipedia.org/wiki/Snake_case) standard. Consider the following examples:
+This package assumes that you properties either follow [CamelCase](http://en.wikipedia.org/wiki/CamelCase) or [Snake Case](http://en.wikipedia.org/wiki/Snake_case) standard. Consider the following examples:
 
 ```
 #!php
