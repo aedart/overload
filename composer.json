@@ -24,6 +24,8 @@
     "illuminate/support": "5.0.*"
   },
   "require-dev": {
+    "aedart/license": "1.*",
+    "aedart/license-file-manager": "1.*",
     "codeception/codeception": "2.0.*"
   },
   "autoload": {
@@ -31,5 +33,8 @@
       "Aedart\\Overload\\": "src/"
     }
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "scripts": {
+    "post-update-cmd": "php vendor/bin/license-manager license:copy vendor/aedart/license/aedart/BSD-3-Clause"
+  }
 }
