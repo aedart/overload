@@ -21,12 +21,12 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "illuminate/support": "5.1.*"
+    "illuminate/support": "~5.1"
   },
   "require-dev": {
     "aedart/license": "1.*",
-    "aedart/license-file-manager": "1.*",
-    "codeception/codeception": "2.0.*"
+    "aedart/license-file-manager": "~1.2",
+    "codeception/codeception": "~2.1"
   },
   "autoload": {
     "psr-4": {
