@@ -1,41 +1,52 @@
-## Overload ##
+[![Latest Stable Version](https://poser.pugx.org/aedart/overload/v/stable)](https://packagist.org/packages/aedart/overload)
+[![Total Downloads](https://poser.pugx.org/aedart/overload/downloads)](https://packagist.org/packages/aedart/overload)
+[![Latest Unstable Version](https://poser.pugx.org/aedart/overload/v/unstable)](https://packagist.org/packages/aedart/overload)
+[![License](https://poser.pugx.org/aedart/overload/license)](https://packagist.org/packages/aedart/overload)
 
-Provides means to dynamically deal with inaccessible properties, by implementing PHP’s magic methods;
+# Overload
+
+Provides means to dynamically deal with inaccessible properties, by implementing PHP's magic methods;
 `__get()`, `__set()`, `__isset()`, and `__unset()`. This package, however, enforces the usage of getters- and setters-methods, ensuring that if a property
 is indeed available, then its corresponding getter or setter method will be invoked. The term 'overload', in this context, refers to PHP’s own definition hereof. (http://php.net/manual/en/language.oop5.overloading.php)
 
-Official project website (https://bitbucket.org/aedart/overload)
+## Contents
 
-## Contents ##
+* [When to use this](#when-to-use-this)
+* [How to install](#how-to-install)
+* [Quick start](#quick-start)
+    * [A Person class](#a-person-class)
+        * [Tip: PHPDoc](#tip-phpdoc)
+    * [Naming convention applied](#naming-convention-applied)
+        * [Property names](#property-names)
+    * [Protected vs. Private properties](#protected-vs-private-properties)
+        * [Behaviour override](#behaviour-override)
+* [Custom usage](#custom-usage)
+* [License](#license)
 
-[TOC]
-
-## When to use this ##
+## When to use this
 
 Generally speaking, magic methods can be very troublesome to use. For the most part, they prohibit the usage of auto-completion in IDEs and if not documented, developers are forced to read large sections of the source code, in order to gain understanding of what’s going on. Depending upon implementation, there might not be any validation, when dynamically assigning new properties to objects, which can break other components, which depend on the given object. In addition to this, it can also be very difficult to write tests for components that are using such magic methods.
 
 This package will not be able to solve any of the mentioned problems, because at the end of the day, as a developer, you still have to ensure that the code readable / understandable, testable and documented. Therefore, I recommend that this package only to be used, if and only if, the following are all true;
 
--	Properties shouldn’t be allowed to be dynamically created and assigned to an object, without prior knowledge about them. Thus, properties must always be predefined.
+-	Properties shouldn't be allowed to be dynamically created and assigned to an object, without prior knowledge about them. Thus, properties must always be predefined.
 -	Getters and setters must always be used for reading / writing properties
 -	You wish to allow access to an object’s properties like such: `$person->age;` and still enforce some kind of validation.
 
-## How to install ##
+## How to install
 
-```
-#!console
+```console
 
 composer require aedart/overload 1.*
 ```
 
 This package uses [composer](https://getcomposer.org/). If you do not know what that is or how it works, I recommend that you read a little about, before attempting to use this package.
 
-## Quick start ##
+## Quick start
 
-### A Person class ###
+### A Person class
 
-```
-#!php
+```php
 <?php
 
 use Aedart\Overload\Interfaces\PropertyOverloadable;
@@ -83,20 +94,19 @@ unset($person->name); // Invokes the __unset() and destroys the name property
 
 ```
 
-### Tip: PHPDoc ###
+### Tip: PHPDoc
 
 When using PHP’s magic methods, for overloading properties, it is a very good idea to make use pf PHPDoc's `@property`-tag.
 Most IDEs can read it and make use of it to provide auto-completion.
 See http://www.phpdoc.org/docs/latest/references/phpdoc/tags/property.html
 
-## Naming convention applied ##
+## Naming convention applied
 
-### Property names ###
+### Property names
 
 This package assumes that you properties either follow [CamelCase](http://en.wikipedia.org/wiki/CamelCase) or [Snake Case](http://en.wikipedia.org/wiki/Snake_case) standard. Consider the following examples:
 
-```
-#!php
+```php
 <?php
 
 $personId = 78; // Valid
@@ -107,7 +117,7 @@ $swordFish_length = 63; // Invalid, because its a mix of both camelCase and unde
 
 ```
 
-### Getter / Setter names ###
+### Getter / Setter names
 
 Getters and setters follow a most strict naming convention; the must follow camelCase and be prefixed with `get` for getter methods and `set` for setter methods. In addition, the package uses the following syntax / rule when searching for a property’s corresponding getter or setter:
 
@@ -131,8 +141,7 @@ Above stated syntax / rule is expressed in [EBFN](http://en.wikipedia.org/wiki/E
 
 **Examples:**
 
-```
-#!php
+```php
 <?php
 
 $personId = 78; // Will look for getPersonId() and setPersonId($value);
@@ -141,12 +150,11 @@ $category_name = 'Products' // Will look for getCategoryName() and setCategoryNa
 
 ```
 
-## Protected vs. Private properties ##
+## Protected vs. Private properties
 
 By default, only `protected` properties are going to be made accessible (or overloaded, if you will). This means that `private` declared properties are not going to be available.
 
-```
-#!php
+```php
 <?php
 
 use Aedart\Overload\Interfaces\PropertyOverloadable;
@@ -167,12 +175,11 @@ class Person implements PropertyOverloadable{
 
 ```
 
-### Behaviour override ###
+### Behaviour override
 
 Should you wish to also expose your private declared properties, then this behaviour can be set per object, from an inside scope.
 
-```
-#!php
+```php
 <?php
 
 use Aedart\Overload\Interfaces\PropertyOverloadable;
@@ -201,7 +208,7 @@ class Person implements PropertyOverloadable{
 
 For further reference, read documentation in `Overload/Traits/Helper/PropertyAccessibilityTrait`
 
-## Custom usage ##
+## Custom usage
 
 If you do not need the full property overload methods, e.g. you only wish to be able to get and set, but not to unset properties, then you can make use of the sub-traits, which the `PropertyOverloadTrait` is composed of.
 
@@ -217,6 +224,6 @@ SetterInvokerTrait  | Implements `__set()` | Aedart\Overload\Traits\SetterInvoke
 IssetInvokerTrait  | Implements `__isset()` | Aedart\Overload\Traits\IssetInvokerTrait
 UnsetInvokerTrait  | Implements `__unset()` | Aedart\Overload\Traits\UnsetInvokerTrait
 
-## License ##
+## License
 
 [BSD-3-Clause](http://spdx.org/licenses/BSD-3-Clause), Read the LICENSE file included in this package
