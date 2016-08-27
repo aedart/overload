@@ -92,7 +92,6 @@ $person->name = 'Alin'; // Invokes the setName(...)
 echo $person->name;	// Invokes the getName(), then outputs 'Alin'
 echo isset($person->name); // Invokes the __isset(), then outputs true
 unset($person->name); // Invokes the __unset() and destroys the name property
-
 ```
 
 ### Tip: PHPDoc
@@ -112,10 +111,9 @@ This package assumes that you properties either follow [CamelCase](http://en.wik
 
 $personId = 78; // Valid
 
-$category_name = 'Products' // Valid
+$category_name = 'Products'; // Valid
 
 $swordFish_length = 63; // Invalid, because its a mix of both camelCase and underscore
-
 ```
 
 ### Getter / Setter names
@@ -148,7 +146,6 @@ Above stated syntax / rule is expressed in [EBFN](http://en.wikipedia.org/wiki/E
 $personId = 78; // Will look for getPersonId() and setPersonId($value);
 
 $category_name = 'Products'; // Will look for getCategoryName() and setCategoryName($value);
-
 ```
 
 ## Protected vs. Private properties
@@ -162,7 +159,6 @@ use Aedart\Overload\Traits\PropertyOverloadTrait;
 
 class Person
 {
-
     use PropertyOverloadTrait;
 
     protected $name = null; // This is made accessible, because of the PropertyOverloadTrait.
@@ -173,7 +169,6 @@ class Person
 
     // Remaining implementation not shown...
 }
-
 ```
 
 ### Behaviour override
@@ -203,7 +198,6 @@ class Person
 	    $this->setPropertyAccessibilityLevel(PropertyAccessibilityLevel::PRIVATE_LEVEL);
     }
 }
-
 ```
 
 For further reference, read documentation in `Overload/Traits/Helper/PropertyAccessibilityTrait`
