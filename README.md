@@ -37,7 +37,7 @@ This package will not be able to solve any of the mentioned problems, because at
 
 ```console
 
-composer require aedart/overload 1.*
+composer require aedart/overload
 ```
 
 This package uses [composer](https://getcomposer.org/). If you do not know what that is or how it works, I recommend that you read a little about, before attempting to use this package.
@@ -49,14 +49,13 @@ This package uses [composer](https://getcomposer.org/). If you do not know what 
 ```php
 <?php
 
-use Aedart\Overload\Interfaces\PropertyOverloadable;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 
 /**
  * @property string $name Name of a person
  */
-class Person implements PropertyOverloadable{
-    
+class Person
+{
     use PropertyOverloadTrait;
     
     /**
@@ -70,18 +69,20 @@ class Person implements PropertyOverloadable{
     
     
     // A getter method for $name
-    public function getName(){
-	return $this->name;
+    public function getName()
+    {
+	    return $this->name;
     }
 
     // A setter method $name
-    public function setName($value){
-	if(is_string($value) && !empty($value)){
-	    $this->name = $value;
-	    return;
-	}
-	
-	throw new InvalidArgumentException('Provided name is invalid');
+    public function setName($value)
+    {
+        if(is_string($value) && !empty($value)){
+            $this->name = $value;
+            return;
+        }
+        
+        throw new InvalidArgumentException('Provided name is invalid');
     }
 }
 
@@ -146,7 +147,7 @@ Above stated syntax / rule is expressed in [EBFN](http://en.wikipedia.org/wiki/E
 
 $personId = 78; // Will look for getPersonId() and setPersonId($value);
 
-$category_name = 'Products' // Will look for getCategoryName() and setCategoryName($value);
+$category_name = 'Products'; // Will look for getCategoryName() and setCategoryName($value);
 
 ```
 
@@ -157,10 +158,10 @@ By default, only `protected` properties are going to be made accessible (or over
 ```php
 <?php
 
-use Aedart\Overload\Interfaces\PropertyOverloadable;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 
-class Person implements PropertyOverloadable{
+class Person
+{
 
     use PropertyOverloadTrait;
 
@@ -182,12 +183,11 @@ Should you wish to also expose your private declared properties, then this behav
 ```php
 <?php
 
-use Aedart\Overload\Interfaces\PropertyOverloadable;
 use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 
-class Person implements PropertyOverloadable{
-
+class Person
+{
     use PropertyOverloadTrait;
 
     protected $name = null; // This is made accessible, because of the PropertyOverloadTrait.
@@ -199,8 +199,8 @@ class Person implements PropertyOverloadable{
 			    // When attempted to write, setName($value) is invoked
 
     public function __construct(){
-	// Change the property accessibility to private
-	$this->setPropertyAccessibilityLevel(PropertyAccessibilityLevel::PRIVATE_LEVEL);
+	    // Change the property accessibility to private
+	    $this->setPropertyAccessibilityLevel(PropertyAccessibilityLevel::PRIVATE_LEVEL);
     }
 }
 
