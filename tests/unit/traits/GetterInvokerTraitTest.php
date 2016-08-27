@@ -2,11 +2,12 @@
 
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\GetterInvokerTrait;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * @coversDefaultClass Aedart\Overload\Traits\GetterInvokerTrait
  */
-class GetterInvokerTraitTest extends \Codeception\TestCase\Test
+class GetterInvokerTraitTest extends UnitTestCase
 {
     /**
      * @var \UnitTester

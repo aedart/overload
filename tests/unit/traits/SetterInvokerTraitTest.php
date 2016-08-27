@@ -2,24 +2,13 @@
 
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\SetterInvokerTrait;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * @coversDefaultClass Aedart\Overload\Traits\SetterInvokerTrait
  */
-class SetterInvokerTraitTest extends \Codeception\TestCase\Test
+class SetterInvokerTraitTest extends UnitTestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
 
     /********************************************************************
      * Helper methods

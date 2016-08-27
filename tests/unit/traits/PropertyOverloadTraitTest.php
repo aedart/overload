@@ -6,6 +6,7 @@ use Aedart\Overload\Traits\IssetInvokerTrait;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 use Aedart\Overload\Traits\SetterInvokerTrait;
 use Aedart\Overload\Traits\UnsetInvokerTrait;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * Class PropertyOverloadTraitTest
@@ -15,20 +16,8 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-class PropertyOverloadTraitTest extends \Codeception\TestCase\Test
+class PropertyOverloadTraitTest extends UnitTestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
 
     /******************************************************************************
      * Providers

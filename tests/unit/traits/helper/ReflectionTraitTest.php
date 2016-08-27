@@ -1,25 +1,13 @@
 <?php
 
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * @coversDefaultClass Aedart\Overload\Traits\Helper\ReflectionTrait
  */
-class ReflectionTraitTest extends \Codeception\TestCase\Test
+class ReflectionTraitTest extends UnitTestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
-
     /********************************************************************
      * Helper methods
      *******************************************************************/

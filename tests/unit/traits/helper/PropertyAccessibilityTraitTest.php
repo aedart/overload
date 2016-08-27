@@ -2,25 +2,13 @@
 
 use Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait;
 use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
+use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * @coversDefaultClass Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  */
-class PropertyAccessibilityTraitTest extends \Codeception\TestCase\Test
+class PropertyAccessibilityTraitTest extends UnitTestCase
 {
-    /**
-     * @var \UnitTester
-     */
-    protected $tester;
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
-
     /********************************************************************
      * Helper methods
      *******************************************************************/
