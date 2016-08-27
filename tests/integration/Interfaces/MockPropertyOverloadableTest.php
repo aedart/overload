@@ -18,7 +18,17 @@ class MockPropertyOverloadableTest extends UnitTestCase
     /**
      * @test
      */
-    public function canMockPropertyOverloadableInterface()
+    public function canMockPropertyOverloadableInterfaceViaPhpUnit()
+    {
+        $this->createMock(PropertyOverloadable::class);
+
+        $this->assertNotNull($mock);
+    }
+
+    /**
+     * @test
+     */
+    public function canMockPropertyOverloadableInterfaceViaMockery()
     {
         $mock = m::mock(PropertyOverloadable::class);
 
