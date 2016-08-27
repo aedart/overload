@@ -24,15 +24,16 @@ class IssetInvokerTraitTest extends \Codeception\TestCase\Test
     /********************************************************************
      * Helper methods
      *******************************************************************/
-  
+
     /**
      * Returns a dummy class
      * @return \IssetDummy
      */
-    protected function getDummyClass(){
-	return new IssetDummy();
+    protected function getDummyClass()
+    {
+        return new IssetDummy();
     }
-        
+
     /********************************************************************
      * Actual tests
      *******************************************************************/
@@ -41,28 +42,31 @@ class IssetInvokerTraitTest extends \Codeception\TestCase\Test
      * @test
      * @covers ::__isset
      */
-    public function propertyIsset(){
-	$dummy = $this->getDummyClass();
-	$this->assertTrue(isset($dummy->name));
+    public function propertyIsset()
+    {
+        $dummy = $this->getDummyClass();
+        $this->assertTrue(isset($dummy->name));
     }
 
     /**
      * @test
      * @covers ::__isset
      */
-    public function propertyIsNotSet(){
-	$dummy = $this->getDummyClass();
-	$dummy->unsetName();
-	$this->assertFalse(isset($dummy->name));	
+    public function propertyIsNotSet()
+    {
+        $dummy = $this->getDummyClass();
+        $dummy->unsetName();
+        $this->assertFalse(isset($dummy->name));
     }
 
     /**
      * @test
      * @covers ::__isset
      */
-    public function issetOfNoneExistingProperty(){
-	$dummy = $this->getDummyClass();
-	$this->assertFalse(isset($dummy->age));	
+    public function issetOfNoneExistingProperty()
+    {
+        $dummy = $this->getDummyClass();
+        $this->assertFalse(isset($dummy->age));
     }
 }
 
@@ -71,13 +75,15 @@ class IssetInvokerTraitTest extends \Codeception\TestCase\Test
  *
  * @property string $name
  */
-class IssetDummy {
-    
+class IssetDummy
+{
+
     use ReflectionTrait, IssetInvokerTrait;
-    
+
     protected $name = 'Jill Anderson';
-    
-    public function unsetName(){
-	unset($this->name);
+
+    public function unsetName()
+    {
+        unset($this->name);
     }
 }

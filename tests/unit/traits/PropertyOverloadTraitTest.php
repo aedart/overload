@@ -37,14 +37,16 @@ class PropertyOverloadTraitTest extends \Codeception\TestCase\Test
     /**
      * @return AClass
      */
-    protected function getAClass(){
+    protected function getAClass()
+    {
         return new AClass();
     }
 
     /**
      * @return BClass
      */
-    protected function getBClass(){
+    protected function getBClass()
+    {
         return new BClass();
     }
 
@@ -55,7 +57,8 @@ class PropertyOverloadTraitTest extends \Codeception\TestCase\Test
     /**
      * @test
      */
-    public function usingPropertyOverloadTraits(){
+    public function usingPropertyOverloadTraits()
+    {
         $x = $this->getAClass();
         $x->name = 'Jimmy';
 
@@ -65,7 +68,8 @@ class PropertyOverloadTraitTest extends \Codeception\TestCase\Test
     /**
      * @test
      */
-    public function usingGetterAndSetterInvokerTraits(){
+    public function usingGetterAndSetterInvokerTraits()
+    {
         $x = $this->getBClass();
         $x->name = 'Jack';
 
@@ -79,17 +83,20 @@ class PropertyOverloadTraitTest extends \Codeception\TestCase\Test
  *
  * @property string $name
  */
-class AClass {
+class AClass
+{
 
     use PropertyOverloadTrait;
 
     protected $name = 'Jim';
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 }
@@ -99,17 +106,20 @@ class AClass {
  *
  * @property string $name
  */
-class BClass {
+class BClass
+{
 
     use ReflectionTrait, GetterInvokerTrait, SetterInvokerTrait;
 
     protected $name = 'Jim';
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 }
