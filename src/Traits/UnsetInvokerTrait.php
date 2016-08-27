@@ -20,7 +20,6 @@ use Aedart\Overload\Exception\UndefinedPropertyException;
  * A fatal error will occur if the given trait is not applied, in your component!
  *
  * @see \Aedart\Overload\Traits\Helper\ReflectionTrait
- * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see \Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>

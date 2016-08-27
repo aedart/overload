@@ -15,7 +15,6 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
  * method implemented, or the give component will fail reads or writes
  * attempts, on the given property
  *
- * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see \Aedart\Overload\Traits\GetterInvokerTrait
  * @see \Aedart\Overload\Traits\SetterInvokerTrait
  * @see \Aedart\Overload\Traits\IssetInvokerTrait

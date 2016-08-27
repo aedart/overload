@@ -24,7 +24,6 @@ use ReflectionProperty;
  * on a given component, then invoke <b>setPropertyAccessibilityLevel(...)</b>
  * in e.g. the __construct() method.
  *
- * @see \Aedart\Overload\Interfaces\PropertyOverloadable
  * @see PropertyAccessibilityLevel
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
