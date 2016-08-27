@@ -3,6 +3,8 @@
 use Aedart\Overload\Exception\UndefinedPropertyException;
 
 /**
+ * @deprecated Will be removed in version 3.0. Interface has proved to yield mocking problems, manually tested via PHPUnit's mocking and Mockery!
+ *
  * Property Overloadable
  *
  * <b>Description</b><br />
