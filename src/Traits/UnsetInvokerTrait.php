@@ -5,16 +5,23 @@ use Aedart\Overload\Exception\UndefinedPropertyException;
 /**
  * Unset Invoker Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Implements the __unset() method
+ *
+ * <br />
  *
  * If requested property is not available / accessible, the __unset()
  * will fail and throw an exception.
  *
- * <b>Property accessibility</b><br />
+ * <br />
+ *
+ * <b>Property accessibility</b>
  * By default, 'protected' properties are exposed and this component will
  * search and execute unset method on those properties, if they are
  * available.
+ *
+ * <br />
  *
  * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
  * A fatal error will occur if the given trait is not applied, in your component!

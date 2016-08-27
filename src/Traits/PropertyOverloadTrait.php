@@ -9,7 +9,8 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
 /**
  * Property Overload Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Composite trait, which implements PHP's magic methods for "overloading"
  * properties. Each property, however, have a defined getter and setter
  * method implemented, or the give component will fail reads or writes

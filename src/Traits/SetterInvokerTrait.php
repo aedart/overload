@@ -7,17 +7,24 @@ use ReflectionProperty;
 /**
  * Setter Invoker Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Implements the __set() method, by looking for a requested property's
  * corresponding setter-method and invokes it, if available.
+ *
+ * <br />
  *
  * If no getter method is available, the __set() will fail and throw an
  * exception.
  *
- * <b>Property accessibility</b><br />
+ * <br />
+ *
+ * <b>Property accessibility</b>
  * By default, 'protected' properties are exposed and this component will
  * search and execute setter methods for those properties, if they are
  * available.
+ *
+ * <br />
  *
  * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
  * A fatal error will occur if the given trait is not applied, in your component!

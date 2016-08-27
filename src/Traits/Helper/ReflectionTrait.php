@@ -7,7 +7,8 @@ use ReflectionProperty;
 /**
  * Reflection Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Provides some utility methods for obtaining information about
  * a components properties available, their accessibility (in overloading
  * context)

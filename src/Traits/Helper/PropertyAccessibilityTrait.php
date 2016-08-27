@@ -7,19 +7,25 @@ use ReflectionProperty;
 /**
  * Property Accessibility Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Determine what maximum level of accessibily properties must have,
  * before they can be set or get, using PHP's magic methods; __set(), __get()
+ *
+ * <br 7>
  *
  * Methods declared inside this trait are all marked protected, because
  * it should not be allowed to change property accessibility, from an
  * outside scope.
  *
- * <b>Default</b><br />
+ * <br />
+ *
  * By default, properties that are declared 'protected' can be can
  * be "overloaded"
  *
- * <b>Tip</b><br />
+ * <br />
+ *
+ * <b>Tip</b>
  * If you wish for you 'private' declared properties to be accessible
  * on a given component, then invoke <b>setPropertyAccessibilityLevel(...)</b>
  * in e.g. the __construct() method.

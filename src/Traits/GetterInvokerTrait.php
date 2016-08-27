@@ -7,17 +7,24 @@ use ReflectionProperty;
 /**
  * Getter Invoker Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Implements the __get() method, by looking for a requested property's
  * corresponding getter-method and invokes it, if available.
+ *
+ * <br 7>
  *
  * If no getter method is available, the __get() will fail and throw an
  * exception.
  *
- * <b>Property accessibility</b><br />
+ * <br />
+ *
+ * <b>Property accessibility</b>
  * By default, 'protected' properties are exposed and this component will
  * search and execute getter methods for those properties, if they are
  * available.
+ *
+ * <br />
  *
  * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
  * A fatal error will occur if the given trait is not applied, in your component!

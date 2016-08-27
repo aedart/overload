@@ -3,13 +3,18 @@
 /**
  * Isset Invoker Trait
  *
- * <b>Description</b><br />
+ * <br />
+ *
  * Implements the __isset() method
  *
- * <b>Property accessibility</b><br />
+ * <br />
+ *
+ * <b>Property accessibility</b>
  * By default, 'protected' properties are exposed and this component will
  * search and execute isset method on those properties, if they are
  * available. If not, then the __isset() will return false
+ *
+ * <br />
  *
  * <b>Warning</b>: This trait assumes that you are also using the ReflectionTrait.
  * A fatal error will occur if the given trait is not applied, in your component!
