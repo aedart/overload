@@ -88,6 +88,16 @@ trait SetterInvokerTrait {
      * @return string Setter method name
      */
     protected function generateSetterName($propertyName) {
-        return 'set' . ucfirst(Str::camel($propertyName));
+
+        static $methods = [];
+
+        if(isset($methods[$propertyName])){
+            return $methods[$propertyName];
+        }
+
+        $method = 'set' . ucfirst(Str::camel($propertyName));
+        $methods[$propertyName] = $method;
+
+        return $method;
     }
 }

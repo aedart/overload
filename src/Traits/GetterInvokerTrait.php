@@ -84,6 +84,16 @@ trait GetterInvokerTrait {
      * @return string Getter method name
      */
     protected function generateGetterName($propertyName) {
-        return 'get' . ucfirst(Str::camel($propertyName));
+
+        static $methods = [];
+
+        if(isset($methods[$propertyName])){
+            return $methods[$propertyName];
+        }
+
+        $method = 'get' . ucfirst(Str::camel($propertyName));
+        $methods[$propertyName] = $method;
+
+        return $method;
     }
 }
