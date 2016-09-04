@@ -67,6 +67,16 @@ trait ReflectionTrait {
      * @return boolean True if method exists, false if not
      */
     protected function hasInternalMethod($name) {
-        return (new ReflectionClass($this))->hasMethod($name);
+
+        static $methods = [];
+
+        if(isset($methods[get_class($this)][$name])){
+            return $methods[get_class($this)][$name];
+        }
+
+        $hasMethod = (new ReflectionClass($this))->hasMethod($name);
+        $methods[get_class($this)][$name] = $hasMethod;
+
+        return $hasMethod;
     }
 }
