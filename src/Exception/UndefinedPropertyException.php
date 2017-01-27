@@ -7,9 +7,10 @@ use LogicException;
  *
  * Throw this exception if a non-existent property is
  * attempted to be accessed / obtained
- * 
+ *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-class UndefinedPropertyException extends LogicException{
-    
+class UndefinedPropertyException extends LogicException
+{
+
 }

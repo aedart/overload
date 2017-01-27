@@ -34,7 +34,8 @@ use ReflectionProperty;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait SetterInvokerTrait {
+trait SetterInvokerTrait
+{
 
     /**
      * Method is run when writing data to inaccessible properties.
@@ -45,7 +46,8 @@ trait SetterInvokerTrait {
      * @return void
      * @throws UndefinedPropertyException If property doesn't exist
      */
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         if ($this->hasInternalProperty($name)) {
             $this->invokeSetter($this->getInternalProperty($name), $value);
             return;
@@ -63,14 +65,16 @@ trait SetterInvokerTrait {
      * @return void;
      * @throws UndefinedPropertyException If given property doesn't have a corresponding get
      */
-    protected function invokeSetter(ReflectionProperty $property, $value) {
+    protected function invokeSetter(ReflectionProperty $property, $value)
+    {
         $methodName = $this->generateSetterName($property->getName());
         if ($this->hasInternalMethod($methodName)) {
             $this->$methodName($value);
             return;
         }
 
-        throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName, $property->getName()));
+        throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName,
+            $property->getName()));
     }
 
     /**
@@ -87,11 +91,12 @@ trait SetterInvokerTrait {
      *
      * @return string Setter method name
      */
-    protected function generateSetterName($propertyName) {
+    protected function generateSetterName($propertyName)
+    {
 
         static $methods = [];
 
-        if(isset($methods[$propertyName])){
+        if (isset($methods[$propertyName])) {
             return $methods[$propertyName];
         }
 

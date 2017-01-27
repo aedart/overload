@@ -31,7 +31,8 @@ use Aedart\Overload\Exception\UndefinedPropertyException;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait UnsetInvokerTrait {
+trait UnsetInvokerTrait
+{
 
     /**
      * Method is invoked when unset() is used on inaccessible properties.
@@ -41,7 +42,8 @@ trait UnsetInvokerTrait {
      * @return void
      * @throws UndefinedPropertyException If property doesn't exist
      */
-    public function __unset($name) {
+    public function __unset($name)
+    {
         if ($this->hasInternalProperty($name)) {
             unset($this->$name);
             return;

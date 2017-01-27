@@ -24,7 +24,8 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait PropertyOverloadTrait {
+trait PropertyOverloadTrait
+{
 
     use ReflectionTrait, GetterInvokerTrait, SetterInvokerTrait, IssetInvokerTrait, UnsetInvokerTrait;
 }

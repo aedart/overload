@@ -25,7 +25,8 @@
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait IssetInvokerTrait {
+trait IssetInvokerTrait
+{
 
     /**
      * Method is triggered by calling isset() or empty() on inaccessible properties.
@@ -37,7 +38,8 @@ trait IssetInvokerTrait {
      *
      * @return boolean True if property isset, false if not OR if property is undefined
      */
-    public function __isset($name) {
+    public function __isset($name)
+    {
         if ($this->hasInternalProperty($name)) {
             return isset($this->$name);
         }

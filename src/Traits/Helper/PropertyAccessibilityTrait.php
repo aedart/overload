@@ -34,7 +34,8 @@ use ReflectionProperty;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait PropertyAccessibilityTrait {
+trait PropertyAccessibilityTrait
+{
 
     /**
      * The current accessibility level
@@ -53,7 +54,8 @@ trait PropertyAccessibilityTrait {
      *
      * @throws RangeException If level is invalid
      */
-    protected function setPropertyAccessibilityLevel($level) {
+    protected function setPropertyAccessibilityLevel($level)
+    {
         if (!$this->isPropertyAccessibilityLevelValid($level)) {
             throw new RangeException(sprintf('Property accessibility level "%s" is invalid', $level));
         }
@@ -71,7 +73,8 @@ trait PropertyAccessibilityTrait {
      *
      * @return integer Property accessibility level
      */
-    protected function getPropertyAccessibilityLevel() {
+    protected function getPropertyAccessibilityLevel()
+    {
         if (is_null($this->_propertyAccessibilityLevel)) {
             $this->setPropertyAccessibilityLevel($this->getDefaultPropertyAccessibilityLevel());
         }
@@ -86,7 +89,8 @@ trait PropertyAccessibilityTrait {
      *
      * @return integer Default property accessibility level (<b>protected level</b>)
      */
-    protected function getDefaultPropertyAccessibilityLevel() {
+    protected function getDefaultPropertyAccessibilityLevel()
+    {
         return PropertyAccessibilityLevel::PROTECTED_LEVEL;
     }
 
@@ -99,7 +103,8 @@ trait PropertyAccessibilityTrait {
      *
      * @return boolean True if level is valid, false if not
      */
-    protected function isPropertyAccessibilityLevelValid($level) {
+    protected function isPropertyAccessibilityLevelValid($level)
+    {
         $public = PropertyAccessibilityLevel::PUBLIC_LEVEL;
         $protected = PropertyAccessibilityLevel::PROTECTED_LEVEL;
         $private = PropertyAccessibilityLevel::PRIVATE_LEVEL;
@@ -125,7 +130,8 @@ trait PropertyAccessibilityTrait {
      *
      * @return boolean True if the given property is accessible, false if not
      */
-    protected function isPropertyAccessible(ReflectionProperty $property) {
+    protected function isPropertyAccessible(ReflectionProperty $property)
+    {
         $level = $this->getPropertyAccessibilityLevel();
         $modifers = $property->getModifiers();
 

@@ -18,7 +18,8 @@ use ReflectionProperty;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-trait ReflectionTrait {
+trait ReflectionTrait
+{
 
     use PropertyAccessibilityTrait;
 
@@ -34,7 +35,8 @@ trait ReflectionTrait {
      *
      * @return boolean True if property exists and is accessible for "overloading"
      */
-    protected function hasInternalProperty($name) {
+    protected function hasInternalProperty($name)
+    {
         $reflection = new ReflectionClass($this);
         if ($reflection->hasProperty($name)) {
             return $this->isPropertyAccessible($reflection->getProperty($name));
@@ -55,7 +57,8 @@ trait ReflectionTrait {
      *
      * @return ReflectionProperty The given property
      */
-    protected function getInternalProperty($name) {
+    protected function getInternalProperty($name)
+    {
         return (new ReflectionClass($this))->getProperty($name);
     }
 
@@ -66,11 +69,12 @@ trait ReflectionTrait {
      *
      * @return boolean True if method exists, false if not
      */
-    protected function hasInternalMethod($name) {
+    protected function hasInternalMethod($name)
+    {
 
         static $methods = [];
 
-        if(isset($methods[get_class($this)][$name])){
+        if (isset($methods[get_class($this)][$name])) {
             return $methods[get_class($this)][$name];
         }
 
