@@ -5,7 +5,7 @@ use Aedart\Overload\Traits\IssetInvokerTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\IssetInvokerTrait
+ * @group isset-invoker-trait
  */
 class IssetInvokerTraitTest extends UnitTestCase
 {
@@ -18,7 +18,7 @@ class IssetInvokerTraitTest extends UnitTestCase
      * Returns a dummy class
      * @return \IssetDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : IssetDummy
     {
         return new IssetDummy();
     }
@@ -29,7 +29,6 @@ class IssetInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__isset
      */
     public function propertyIsset()
     {
@@ -39,7 +38,6 @@ class IssetInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__isset
      */
     public function propertyIsNotSet()
     {
@@ -50,7 +48,6 @@ class IssetInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__isset
      */
     public function issetOfNoneExistingProperty()
     {
@@ -66,7 +63,6 @@ class IssetInvokerTraitTest extends UnitTestCase
  */
 class IssetDummy
 {
-
     use ReflectionTrait, IssetInvokerTrait;
 
     protected $name = 'Jill Anderson';

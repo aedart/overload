@@ -1,4 +1,7 @@
-<?php namespace Aedart\Overload\Traits;
+<?php
+declare(strict_types=1);
+
+namespace Aedart\Overload\Traits;
 
 /**
  * Isset Invoker Trait
@@ -27,7 +30,6 @@
  */
 trait IssetInvokerTrait
 {
-
     /**
      * Method is triggered by calling isset() or empty() on inaccessible properties.
      *
@@ -38,7 +40,7 @@ trait IssetInvokerTrait
      *
      * @return boolean True if property isset, false if not OR if property is undefined
      */
-    public function __isset($name)
+    public function __isset(string $name) : bool
     {
         if ($this->hasInternalProperty($name)) {
             return isset($this->$name);
