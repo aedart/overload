@@ -5,7 +5,7 @@ use Aedart\Overload\Traits\SetterInvokerTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\SetterInvokerTrait
+ * @group setter-invoker-trait
  */
 class SetterInvokerTraitTest extends UnitTestCase
 {
@@ -18,7 +18,7 @@ class SetterInvokerTraitTest extends UnitTestCase
      * Returns a dummy class
      * @return \SetterInvokerDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : SetterInvokerDummy
     {
         return new SetterInvokerDummy();
     }
@@ -29,9 +29,6 @@ class SetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__set
-     * @covers ::invokeSetter
-     * @covers ::generateSetterName
      */
     public function setAccessibleProperty()
     {
@@ -45,7 +42,6 @@ class SetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__set
      * @expectedException Aedart\Overload\Exception\UndefinedPropertyException
      */
     public function setNoneExistingProperty()
@@ -56,9 +52,6 @@ class SetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__set
-     * @covers ::invokeSetter
-     * @covers ::generateSetterName
      * @expectedException Aedart\Overload\Exception\UndefinedPropertyException
      */
     public function attemptPropertyWriteWithoutSetter()
@@ -75,7 +68,6 @@ class SetterInvokerTraitTest extends UnitTestCase
  */
 class SetterInvokerDummy
 {
-
     use ReflectionTrait, SetterInvokerTrait;
 
     protected $name = 'Drew Fishmoon';

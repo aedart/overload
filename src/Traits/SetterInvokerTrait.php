@@ -1,4 +1,7 @@
-<?php namespace Aedart\Overload\Traits;
+<?php
+declare(strict_types=1);
+
+namespace Aedart\Overload\Traits;
 
 use Aedart\Overload\Exception\UndefinedPropertyException;
 use Illuminate\Support\Str;
@@ -36,7 +39,6 @@ use ReflectionProperty;
  */
 trait SetterInvokerTrait
 {
-
     /**
      * Method is run when writing data to inaccessible properties.
      *
@@ -46,7 +48,7 @@ trait SetterInvokerTrait
      * @return void
      * @throws UndefinedPropertyException If property doesn't exist
      */
-    public function __set($name, $value)
+    public function __set(string $name, $value) : void
     {
         if ($this->hasInternalProperty($name)) {
             $this->invokeSetter($this->getInternalProperty($name), $value);
@@ -65,7 +67,7 @@ trait SetterInvokerTrait
      * @return void;
      * @throws UndefinedPropertyException If given property doesn't have a corresponding get
      */
-    protected function invokeSetter(ReflectionProperty $property, $value)
+    protected function invokeSetter(ReflectionProperty $property, $value) : void
     {
         $methodName = $this->generateSetterName($property->getName());
         if ($this->hasInternalMethod($methodName)) {
@@ -73,8 +75,10 @@ trait SetterInvokerTrait
             return;
         }
 
-        throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName,
-            $property->getName()));
+        throw new UndefinedPropertyException(sprintf(
+            'No "%s"() method available for property "%s"', $methodName,
+            $property->getName()
+        ));
     }
 
     /**
@@ -91,9 +95,8 @@ trait SetterInvokerTrait
      *
      * @return string Setter method name
      */
-    protected function generateSetterName($propertyName)
+    protected function generateSetterName(string $propertyName) : string
     {
-
         static $methods = [];
 
         if (isset($methods[$propertyName])) {
