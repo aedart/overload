@@ -4,7 +4,7 @@ use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\Helper\ReflectionTrait
+ * @group reflection-trait
  */
 class ReflectionTraitTest extends UnitTestCase
 {
@@ -16,7 +16,7 @@ class ReflectionTraitTest extends UnitTestCase
      * Returns a dummy class
      * @return \ReflectionTraitDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : ReflectionTraitDummy
     {
         return new ReflectionTraitDummy();
     }
@@ -26,7 +26,7 @@ class ReflectionTraitTest extends UnitTestCase
      * @param string $name Method name
      * @return \ReflectionMethod
      */
-    protected function getMethod($name)
+    protected function getMethod(string $name) : ReflectionMethod
     {
         $class = new ReflectionClass($this->getDummyClass());
         $method = $class->getMethod($name);
@@ -40,7 +40,6 @@ class ReflectionTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::hasInternalMethod
      */
     public function hasInternalMethod()
     {
@@ -51,7 +50,6 @@ class ReflectionTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::getInternalProperty
      */
     public function getInternalProperty()
     {
@@ -66,7 +64,6 @@ class ReflectionTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::hasInternalProperty
      */
     public function doesNotHaveInternalProperty()
     {
@@ -79,7 +76,6 @@ class ReflectionTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::hasInternalProperty
      */
     public function hasAccessibleInternalProperty()
     {
@@ -92,7 +88,6 @@ class ReflectionTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::hasInternalProperty
      */
     public function hasInaccessibleInternalProperty()
     {
@@ -109,7 +104,6 @@ class ReflectionTraitTest extends UnitTestCase
  */
 class ReflectionTraitDummy
 {
-
     use ReflectionTrait;
 
     protected $name = 'Rick Johnson';

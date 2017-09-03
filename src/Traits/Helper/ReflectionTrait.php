@@ -1,6 +1,8 @@
-<?php namespace Aedart\Overload\Traits\Helper;
+<?php
+declare(strict_types=1);
 
-use Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait;
+namespace Aedart\Overload\Traits\Helper;
+
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -14,13 +16,11 @@ use ReflectionProperty;
  * context)
  *
  * @see PropertyAccessibilityTrait
- * @see \Aedart\Overload\Interfaces\PropertyAccessibilityLevel
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait ReflectionTrait
 {
-
     use PropertyAccessibilityTrait;
 
     /**
@@ -29,13 +29,12 @@ trait ReflectionTrait
      * if it can be accessed via __get(), __set() methods
      *
      * @see PropertyAccessibilityTrait::getPropertyAccessibilityLevel()
-     * @see \Aedart\Overload\Interfaces\PropertyAccessibilityLevel
      *
      * @param string $name Property name
      *
      * @return boolean True if property exists and is accessible for "overloading"
      */
-    protected function hasInternalProperty($name)
+    protected function hasInternalProperty(string $name) : bool
     {
         $reflection = new ReflectionClass($this);
         if ($reflection->hasProperty($name)) {
@@ -51,13 +50,12 @@ trait ReflectionTrait
      * Method doesn't check accessibility
      *
      * @see ReflectionTrait::hasInternalProperty($name)
-     * @see \Aedart\Overload\Interfaces\PropertyAccessibilityLevel
      *
      * @param string $name Property name
      *
      * @return ReflectionProperty The given property
      */
-    protected function getInternalProperty($name)
+    protected function getInternalProperty(string $name) : ReflectionProperty
     {
         return (new ReflectionClass($this))->getProperty($name);
     }
@@ -69,17 +67,17 @@ trait ReflectionTrait
      *
      * @return boolean True if method exists, false if not
      */
-    protected function hasInternalMethod($name)
+    protected function hasInternalMethod(string $name) : bool
     {
-
         static $methods = [];
 
-        if (isset($methods[get_class($this)][$name])) {
-            return $methods[get_class($this)][$name];
+        $class = get_class($this);
+        if (isset($methods[$class][$name])) {
+            return $methods[$class][$name];
         }
 
         $hasMethod = (new ReflectionClass($this))->hasMethod($name);
-        $methods[get_class($this)][$name] = $hasMethod;
+        $methods[$class][$name] = $hasMethod;
 
         return $hasMethod;
     }
