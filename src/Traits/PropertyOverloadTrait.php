@@ -1,10 +1,9 @@
-<?php namespace Aedart\Overload\Traits;
+<?php
+declare(strict_types=1);
+
+namespace Aedart\Overload\Traits;
 
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
-use Aedart\Overload\Traits\GetterInvokerTrait;
-use Aedart\Overload\Traits\SetterInvokerTrait;
-use Aedart\Overload\Traits\IssetInvokerTrait;
-use Aedart\Overload\Traits\UnsetInvokerTrait;
 
 /**
  * Property Overload Trait
@@ -26,6 +25,9 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
  */
 trait PropertyOverloadTrait
 {
-
-    use ReflectionTrait, GetterInvokerTrait, SetterInvokerTrait, IssetInvokerTrait, UnsetInvokerTrait;
+    use ReflectionTrait;
+    use GetterInvokerTrait;
+    use SetterInvokerTrait;
+    use IssetInvokerTrait;
+    use UnsetInvokerTrait;
 }

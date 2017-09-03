@@ -2,17 +2,14 @@
 
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
 use Aedart\Overload\Traits\GetterInvokerTrait;
-use Aedart\Overload\Traits\IssetInvokerTrait;
 use Aedart\Overload\Traits\PropertyOverloadTrait;
 use Aedart\Overload\Traits\SetterInvokerTrait;
-use Aedart\Overload\Traits\UnsetInvokerTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
  * Class PropertyOverloadTraitTest
  *
- * This test is about ensuring that trait/naming conflicts do not occur,
- * when combining the different traits
+ * @group property-overload-trait
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
@@ -26,7 +23,7 @@ class PropertyOverloadTraitTest extends UnitTestCase
     /**
      * @return AClass
      */
-    protected function getAClass()
+    protected function getAClass() : AClass
     {
         return new AClass();
     }
@@ -34,7 +31,7 @@ class PropertyOverloadTraitTest extends UnitTestCase
     /**
      * @return BClass
      */
-    protected function getBClass()
+    protected function getBClass() : BClass
     {
         return new BClass();
     }
@@ -74,7 +71,6 @@ class PropertyOverloadTraitTest extends UnitTestCase
  */
 class AClass
 {
-
     use PropertyOverloadTrait;
 
     protected $name = 'Jim';
@@ -97,7 +93,6 @@ class AClass
  */
 class BClass
 {
-
     use ReflectionTrait, GetterInvokerTrait, SetterInvokerTrait;
 
     protected $name = 'Jim';
