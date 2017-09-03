@@ -75,15 +75,15 @@ class Person
     
     
     // A getter method for $name
-    public function getName()
+    public function getName() : string
     {
 	    return $this->name;
     }
 
     // A setter method $name
-    public function setName($value)
+    public function setName(string $value)
     {
-        if(is_string($value) && !empty($value)){
+        if( ! empty($value)){
             $this->name = $value;
             return;
         }
@@ -95,8 +95,10 @@ class Person
 // Some place else, in your application, you can then invoke the following:
 $person = new Person();
 $person->name = 'Alin'; // Invokes the setName(...)
+
 echo $person->name;	// Invokes the getName(), then outputs 'Alin'
 echo isset($person->name); // Invokes the __isset(), then outputs true
+
 unset($person->name); // Invokes the __unset() and destroys the name property
 ```
 
