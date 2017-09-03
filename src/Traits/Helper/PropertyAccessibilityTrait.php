@@ -1,6 +1,9 @@
-<?php namespace Aedart\Overload\Traits\Helper;
+<?php
+declare(strict_types=1);
 
-use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
+namespace Aedart\Overload\Traits\Helper;
+
+use Aedart\Overload\Contracts\Properties\AccessibilityLevels;
 use RangeException;
 use ReflectionProperty;
 
@@ -9,10 +12,10 @@ use ReflectionProperty;
  *
  * <br />
  *
- * Determine what maximum level of accessibily properties must have,
+ * Determine what maximum level of accessibly properties must have,
  * before they can be set or get, using PHP's magic methods; __set(), __get()
  *
- * <br 7>
+ * <br />
  *
  * Methods declared inside this trait are all marked protected, because
  * it should not be allowed to change property accessibility, from an
@@ -30,13 +33,12 @@ use ReflectionProperty;
  * on a given component, then invoke <b>setPropertyAccessibilityLevel(...)</b>
  * in e.g. the __construct() method.
  *
- * @see PropertyAccessibilityLevel
+ * @see AccessibilityLevels
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
 trait PropertyAccessibilityTrait
 {
-
     /**
      * The current accessibility level
      *
@@ -54,9 +56,9 @@ trait PropertyAccessibilityTrait
      *
      * @throws RangeException If level is invalid
      */
-    protected function setPropertyAccessibilityLevel($level)
+    protected function setPropertyAccessibilityLevel(int $level)
     {
-        if (!$this->isPropertyAccessibilityLevelValid($level)) {
+        if ( ! $this->isPropertyAccessibilityLevelValid($level)) {
             throw new RangeException(sprintf('Property accessibility level "%s" is invalid', $level));
         }
         $this->_propertyAccessibilityLevel = $level;
@@ -73,9 +75,9 @@ trait PropertyAccessibilityTrait
      *
      * @return integer Property accessibility level
      */
-    protected function getPropertyAccessibilityLevel()
+    protected function getPropertyAccessibilityLevel() : int
     {
-        if (is_null($this->_propertyAccessibilityLevel)) {
+        if ( ! isset($this->_propertyAccessibilityLevel)) {
             $this->setPropertyAccessibilityLevel($this->getDefaultPropertyAccessibilityLevel());
         }
 
@@ -85,31 +87,30 @@ trait PropertyAccessibilityTrait
     /**
      * Returns a default highest property accessibility level
      *
-     * @see PropertyAccessibilityLevel
+     * @see AccessibilityLevels
      *
      * @return integer Default property accessibility level (<b>protected level</b>)
      */
-    protected function getDefaultPropertyAccessibilityLevel()
+    protected function getDefaultPropertyAccessibilityLevel(): int
     {
-        return PropertyAccessibilityLevel::PROTECTED_LEVEL;
+        return AccessibilityLevels::PROTECTED_LEVEL;
     }
 
     /**
      * Validate the given property accessibility level
      *
-     * @see PropertyAccessibilityLevel
+     * @see AccessibilityLevels
      *
      * @param integer $level Property accessibility level
      *
      * @return boolean True if level is valid, false if not
      */
-    protected function isPropertyAccessibilityLevelValid($level)
+    protected function isPropertyAccessibilityLevelValid(int $level) : bool
     {
-        $public = PropertyAccessibilityLevel::PUBLIC_LEVEL;
-        $protected = PropertyAccessibilityLevel::PROTECTED_LEVEL;
-        $private = PropertyAccessibilityLevel::PRIVATE_LEVEL;
-
-        if (is_int($level) && ($level == $public || $level == $protected || $level == $private)) {
+        if ($level == AccessibilityLevels::PUBLIC_LEVEL ||
+            $level ==  AccessibilityLevels::PROTECTED_LEVEL ||
+            $level == AccessibilityLevels::PRIVATE_LEVEL
+        ) {
             return true;
         }
 
@@ -130,12 +131,11 @@ trait PropertyAccessibilityTrait
      *
      * @return boolean True if the given property is accessible, false if not
      */
-    protected function isPropertyAccessible(ReflectionProperty $property)
+    protected function isPropertyAccessible(ReflectionProperty $property) : bool
     {
         $level = $this->getPropertyAccessibilityLevel();
-        $modifers = $property->getModifiers();
 
-        if (!$property->isStatic() && $modifers <= $level) {
+        if ( ! $property->isStatic() && $property->getModifiers() <= $level) {
             return true;
         }
 

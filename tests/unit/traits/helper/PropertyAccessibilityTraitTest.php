@@ -1,11 +1,11 @@
 <?php
 
+use Aedart\Overload\Contracts\Properties\AccessibilityLevels;
 use Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait;
-use Aedart\Overload\Interfaces\PropertyAccessibilityLevel;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait
+ * @group property-accessibility-trait
  */
 class PropertyAccessibilityTraitTest extends UnitTestCase
 {
@@ -15,29 +15,31 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
 
     /**
      * Get a mock of the trait
+     *
      * @return PHPUnit_Framework_MockObject_MockObject
      */
-    protected function getTraitMock()
+    protected function getTraitMock() : PHPUnit_Framework_MockObject_MockObject
     {
-        $m = $this->getMockForTrait('Aedart\Overload\Traits\Helper\PropertyAccessibilityTrait');
-        return $m;
+        return $this->getMockForTrait(PropertyAccessibilityTrait::class);
     }
 
     /**
      * Returns a dummy class
+     *
      * @return \PropertyAccessibilityTraitDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : PropertyAccessibilityTraitDummy
     {
         return new PropertyAccessibilityTraitDummy();
     }
 
     /**
      * Get a method - with its accessibility set to true
+     *
      * @param string $name Method name
      * @return \ReflectionMethod
      */
-    protected function getMethod($name)
+    protected function getMethod(string $name) : ReflectionMethod
     {
         $class = new ReflectionClass($this->getDummyClass());
         $method = $class->getMethod($name);
@@ -51,23 +53,16 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::getDefaultPropertyAccessibilityLevel
-     * @covers ::getPropertyAccessibilityLevel
-     * @covers ::setPropertyAccessibilityLevel
-     * @covers ::isPropertyAccessibilityLevelValid
      */
     public function getDefaultPropertyAccessibilityLevel()
     {
         $method = $this->getMethod('getPropertyAccessibilityLevel');
         $dummy = $this->getDummyClass();
-        $this->assertEquals(PropertyAccessibilityLevel::PROTECTED_LEVEL, $method->invoke($dummy));
+        $this->assertEquals(AccessibilityLevels::PROTECTED_LEVEL, $method->invoke($dummy));
     }
 
     /**
      * @test
-     * @covers ::getPropertyAccessibilityLevel
-     * @covers ::setPropertyAccessibilityLevel
-     * @covers ::isPropertyAccessibilityLevelValid
      */
     public function setAndGetPropertyAccessibilityLevel()
     {
@@ -75,15 +70,13 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
         $getter = $this->getMethod('getPropertyAccessibilityLevel');
         $dummy = $this->getDummyClass();
 
-        $setter->invoke($dummy, PropertyAccessibilityLevel::PRIVATE_LEVEL);
+        $setter->invoke($dummy, AccessibilityLevels::PRIVATE_LEVEL);
 
-        $this->assertEquals(PropertyAccessibilityLevel::PRIVATE_LEVEL, $getter->invoke($dummy));
+        $this->assertEquals(AccessibilityLevels::PRIVATE_LEVEL, $getter->invoke($dummy));
     }
 
     /**
      * @test
-     * @covers ::setPropertyAccessibilityLevel
-     * @covers ::isPropertyAccessibilityLevelValid
      * @expectedException \RangeException
      */
     public function setInvalidPropertyAccessibilityLevel()
@@ -96,7 +89,6 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::isPropertyAccessible
      */
     public function isPublicPropertyAccessible()
     {
@@ -109,7 +101,6 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::isPropertyAccessible
      */
     public function isProtectedPropertyAccessible()
     {
@@ -122,7 +113,6 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::isPropertyAccessible
      */
     public function isPrivatePropertyAccessible()
     {
@@ -140,10 +130,9 @@ class PropertyAccessibilityTraitTest extends UnitTestCase
  */
 class PropertyAccessibilityTraitDummy
 {
+    use PropertyAccessibilityTrait;
 
     public $name = 'John Doe';
     protected $age = 42;
     private $height = 193;
-
-    use PropertyAccessibilityTrait;
 }
