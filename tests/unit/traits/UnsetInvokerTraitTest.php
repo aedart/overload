@@ -5,7 +5,7 @@ use Aedart\Overload\Traits\UnsetInvokerTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\UnsetInvokerTrait
+ * @group unset-invoker-trait
  */
 class UnsetInvokerTraitTest extends UnitTestCase
 {
@@ -18,7 +18,7 @@ class UnsetInvokerTraitTest extends UnitTestCase
      * Returns a dummy class
      * @return \UnsetDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : UnsetDummy
     {
         return new UnsetDummy();
     }
@@ -29,7 +29,6 @@ class UnsetInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__unset
      */
     public function unsetProperty()
     {
@@ -40,7 +39,6 @@ class UnsetInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__unset
      * @expectedException Aedart\Overload\Exception\UndefinedPropertyException
      */
     public function attemptUnsetNoneExistingProperty()
