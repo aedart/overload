@@ -5,7 +5,7 @@ use Aedart\Overload\Traits\GetterInvokerTrait;
 use Aedart\Testing\TestCases\Unit\UnitTestCase;
 
 /**
- * @coversDefaultClass Aedart\Overload\Traits\GetterInvokerTrait
+ * @group getter-invoker-trait
  */
 class GetterInvokerTraitTest extends UnitTestCase
 {
@@ -30,7 +30,7 @@ class GetterInvokerTraitTest extends UnitTestCase
      * Returns a dummy class
      * @return \GetterInvokerDummy
      */
-    protected function getDummyClass()
+    protected function getDummyClass() : GetterInvokerDummy
     {
         return new GetterInvokerDummy();
     }
@@ -41,9 +41,6 @@ class GetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__get
-     * @covers ::invokeGetter
-     * @covers ::generateGetterName
      */
     public function getAccessibleProperty()
     {
@@ -53,7 +50,6 @@ class GetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__get
      * @expectedException Aedart\Overload\Exception\UndefinedPropertyException
      */
     public function getNoneExistingProperty()
@@ -64,9 +60,6 @@ class GetterInvokerTraitTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::__get
-     * @covers ::invokeGetter
-     * @covers ::generateGetterName
      * @expectedException Aedart\Overload\Exception\UndefinedPropertyException
      */
     public function attemptPropertyReadWithoutGetter()

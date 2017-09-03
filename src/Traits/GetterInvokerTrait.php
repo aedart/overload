@@ -1,4 +1,7 @@
-<?php namespace Aedart\Overload\Traits;
+<?php
+declare(strict_types=1);
+
+namespace Aedart\Overload\Traits;
 
 use Aedart\Overload\Exception\UndefinedPropertyException;
 use Illuminate\Support\Str;
@@ -36,7 +39,6 @@ use ReflectionProperty;
  */
 trait GetterInvokerTrait
 {
-
     /**
      * Method is utilized for reading data from inaccessible properties.
      *
@@ -45,7 +47,7 @@ trait GetterInvokerTrait
      * @return mixed Property value
      * @throws UndefinedPropertyException If property doesn't exist
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         if ($this->hasInternalProperty($name)) {
             return $this->invokeGetter($this->getInternalProperty($name));
@@ -69,8 +71,10 @@ trait GetterInvokerTrait
             return $this->$methodName();
         }
 
-        throw new UndefinedPropertyException(sprintf('No "%s"() method available for property "%s"', $methodName,
-            $property->getName()));
+        throw new UndefinedPropertyException(sprintf(
+            'No "%s"() method available for property "%s"', $methodName,
+            $property->getName()
+        ));
     }
 
     /**
@@ -87,9 +91,8 @@ trait GetterInvokerTrait
      *
      * @return string Getter method name
      */
-    protected function generateGetterName($propertyName)
+    protected function generateGetterName(string $propertyName) : string
     {
-
         static $methods = [];
 
         if (isset($methods[$propertyName])) {
