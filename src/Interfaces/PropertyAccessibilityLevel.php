@@ -1,8 +1,10 @@
 <?php namespace Aedart\Overload\Interfaces;
 
-use ReflectionProperty;
+use Aedart\Overload\Contracts\Properties\AccessibilityLevels;
 
 /**
+ * @deprecated Since 4.0, use \Aedart\Overload\Contracts\Properties\AccessibilityLevels instead
+ *
  * Property Accessibility
  *
  * <b>Description</b><br />
@@ -15,24 +17,7 @@ use ReflectionProperty;
  *
  * @author Alin Eugen Deac <aedart@gmail.com>
  */
-interface PropertyAccessibilityLevel
+interface PropertyAccessibilityLevel extends AccessibilityLevels
 {
 
-    /**
-     * Public level - no 'protected' nor 'private' properties
-     * are going to be automatically get / set
-     */
-    const PUBLIC_LEVEL = ReflectionProperty::IS_PUBLIC;
-
-    /**
-     * Protected level - properties that are declared
-     * 'protected' can be set / get.
-     */
-    const PROTECTED_LEVEL = ReflectionProperty::IS_PROTECTED;
-
-    /**
-     * Private level - properties that are declared
-     * 'protected' or 'private' can be set / get.
-     */
-    const PRIVATE_LEVEL = ReflectionProperty::IS_PRIVATE;
 }
