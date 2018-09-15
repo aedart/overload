@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use ReflectionProperty;
 
 /**
+ * @deprecated Use \Aedart\Properties\Overload instead, in aedart/athenaeum package
+ *
  * Setter Invoker Trait
  *
  * <br />

@@ -4,7 +4,9 @@
 [![Latest Unstable Version](https://poser.pugx.org/aedart/overload/v/unstable)](https://packagist.org/packages/aedart/overload)
 [![License](https://poser.pugx.org/aedart/overload/license)](https://packagist.org/packages/aedart/overload)
 
-# Overload
+# Deprecated - Overload
+
+Package has been replaced by [aedart/athenaeum](https://github.com/aedart/athenaeum)
 
 Provides means to dynamically deal with inaccessible properties, by implementing PHP's magic methods;
 `__get()`, `__set()`, `__isset()`, and `__unset()`. This package, however, enforces the usage of getters- and setters-methods, ensuring that if a property

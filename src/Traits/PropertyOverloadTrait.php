@@ -6,6 +6,8 @@ namespace Aedart\Overload\Traits;
 use Aedart\Overload\Traits\Helper\ReflectionTrait;
 
 /**
+ * @deprecated Use \Aedart\Properties\Overload instead, in aedart/athenaeum package
+ *
  * Property Overload Trait
  *
  * <br />

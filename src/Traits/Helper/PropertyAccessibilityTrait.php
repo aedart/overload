@@ -8,6 +8,8 @@ use RangeException;
 use ReflectionProperty;
 
 /**
+ * @deprecated Use \Aedart\Properties\Accessibility instead, in aedart/athenaeum package
+ *
  * Property Accessibility Trait
  *
  * <br />

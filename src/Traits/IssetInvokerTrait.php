@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Aedart\Overload\Traits;
 
 /**
+ * @deprecated Use \Aedart\Properties\Overload instead, in aedart/athenaeum package
+ *
  * Isset Invoker Trait
  *
  * <br />

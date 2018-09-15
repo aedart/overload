@@ -7,6 +7,8 @@ use ReflectionClass;
 use ReflectionProperty;
 
 /**
+ * @deprecated Use \Aedart\Properties\Reflections instead, in aedart/athenaeum package
+ *
  * Reflection Trait
  *
  * <br />

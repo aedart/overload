@@ -6,6 +6,8 @@ namespace Aedart\Overload\Traits;
 use Aedart\Overload\Exception\UndefinedPropertyException;
 
 /**
+ * @deprecated Use \Aedart\Properties\Overload instead, in aedart/athenaeum package
+ *
  * Unset Invoker Trait
  *
  * <br />

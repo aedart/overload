@@ -3,6 +3,8 @@
 use LogicException;
 
 /**
+ * @deprecated Use \Aedart\Properties\Exceptions\UndefinedProperty, in aedart/athenaeum package
+ *
  * Undefined Property Exception
  *
  * Throw this exception if a non-existent property is

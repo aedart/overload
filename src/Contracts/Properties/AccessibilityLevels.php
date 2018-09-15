@@ -5,6 +5,8 @@ namespace Aedart\Overload\Contracts\Properties;
 use ReflectionProperty;
 
 /**
+ * @deprecated Use \Aedart\Contracts\Properties\AccessibilityLevels instead, in aedart/athenaeum package
+ *
  * Properties Accessibility Levels
  *
  * <br />
